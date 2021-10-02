@@ -1,15 +1,14 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="post">
+<div class="post text-white">
     {% if post.published_date %}
-    <div class="date">
+    <div class="date text-black-50">
         {{ post.published_date }}
     </div>
     {% endif %}
     {% if user.is_authenticated %}
-    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span
-            class="glyphicon glyphicon-pencil"></span></a>
+    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="bi-pencil" style="font-size: 2rem; color: rgb(226, 171, 22);"></i></a>
     {% endif %}
     <h2>{{ post.title }}</h2>
     <p>{{ post.text|linebreaksbr }}</p>

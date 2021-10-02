@@ -3,12 +3,16 @@
 <body>
     {% block content %}
     {% for post in posts %}
-    <div class="post">
-        <div class="date">
+    <div class="post mt-3 fadeinleft">
+        <div class="date text-white-50">
             {{ post.published_date }}
         </div>
-        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <h2 class='mt-2'><a class='titulo' href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p class='text-light'>{{ post.text|linebreaksbr }}</p>
+        <div>
+            <button class="btn btn-light agregarComentario">Agregar Comentario</button>
+        </div>
+        <hr class='text-white'>
     </div>
     {% endfor %}
     {% endblock %}

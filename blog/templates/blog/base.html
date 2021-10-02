@@ -1,29 +1,172 @@
 {% load static %}
-<html>
+
+<!doctype html>
+<html lang="en">
 
 <head>
-    <title>Django Girls blog</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <title>Tus series Noticias</title>
 </head>
 
-<body>
-    <div class="page-header">
-        {% if user.is_authenticated %}
-        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        {% endif %}
-        <h1><a href="/">Django Girls Blog</a></h1>
+<!--NavBar-->
+<body class='imagen-fondo'>
+  <div class="page-header text-center">
+    {% if user.is_authenticated %}
+    <a href="{% url 'post_new' %}" class="top-menu"><i class="bi-plus-circle"
+        style="font-size: 2rem; color: rgb(255, 255, 255);"></i></a>
+
+    {% endif %}
+    <h1><a href="/">Tus Series Noticias</a></h1>
+  </div>
+
+  <nav class="navbar navbar-light page-header">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand text-white">Inicio</a>
+      <form class="d-flex">
+        <input class="form-control" type="search" placeholder="Buscar..." aria-label="Search">
+        <button class="btn btn-outline-success text-white " type="button" id="btnBuscar"
+          onclick="limpiarFormulario()">Buscar</button>
+      </form>
     </div>
-    <div class="content container">
+  </nav>
+<!--NavBar-->
+
+
+<!--Contenido-->
+  <div class="container">
+    <div class="jumbotron bg-secondary">
+      <div class="content container my-5">
+        <H2 class=" pt-3 mb-5 text-white">LAS ÚLTIMAS NOTICIAS DE TUS SERIES FAVORITAS</H2>
         <div class="row">
-            <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
-            </div>
+          <div class="col-md-8 col-10">
+            <img src="https://phantom-marca.unidadeditorial.es/c3af0b35b44415059509ecb0143b32fb/resize/1320/f/jpg/assets/multimedia/imagenes/2020/12/01/16068259465912.jpg" style="width:100%" alt="">
+            <hr class="mb-5">
+            {% block content %}
+            {% endblock %}
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <!--Contenido-->
+
+
+
+
+  <!-- Footer -->
+  <footer class="text-center text-lg-start page-footer">
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>Tus Series Noticias
+            </h6>
+            <p>
+              Brindandote las mejores noticias actuales
+            </p>
+          </div>
+          <!-- Grid column -->
+
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Contact
+            </h6>
+            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              info@example.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2021 Copyright
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    $(document).ready(function () {
+      $("#btnBuscar").click(function () {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Nuestros servidores de busqueda están en mantenimiento',
+          footer: 'Pruba nuevamente más tarde'
+        })
+      });
+
+      $(".agregarComentario").click(function () {
+
+        Swal.fire({
+          title: 'Los comentarios están desactivados temporalmente',
+          text: 'Por favor inténtelo más tarde',
+          imageUrl: 'https://c.tenor.com/sk69qOBMNvAAAAAM/what-well.gif',
+          imageWidth: 200,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+        })
+      });
+
+
+      $(window).scroll(function () {
+        $('.fadeinleft').each(function (i) {
+          var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+          var bottom_of_window = $(window).scrollTop() + ($(window).height()*2);
+          if (bottom_of_window > bottom_of_element) {
+            $(this).animate({ 'opacity': '1', 'margin-left': '0px' }, 1000);
+          }
+        });
+      });
+
+    });
+
+
+  </script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
 </body>
 
 </html>

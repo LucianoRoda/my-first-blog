@@ -1,12 +1,16 @@
-.page-header {
-    background-color: #C25100;
+.page-header, .page-footer{
+    background-color: #377197;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
 
+.page-footer > *{
+    color: white;
+}
+
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
-    font-size: 36pt;
+    font-size: 60pt;
     text-decoration: none;
 }
 
@@ -16,6 +20,10 @@
 
 h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
+}
+
+.titulo{
+    color:#e1bf1b;
 }
 
 .date {
@@ -42,5 +50,19 @@ h1, h2, h3, h4 {
 }
 
 .post h2 a, .post h2 a:visited {
-    color: #000000;
+    color: #db9d2c;
 }
+
+.imagen-fondo {
+    background-image: url('https://i.pinimg.com/originals/9a/89/99/9a899986aef4997c7a21c2d87b36dc4d.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+  }
+
+  .fadeinleft {
+         opacity:0;
+        margin-left:-300px;
+        max-width:100%;
+    }
+    
